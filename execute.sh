@@ -1,6 +1,7 @@
 #!/bin/bash
 
 clear
+cp -r data/ build/data/
 cd build/
 cmake ..
 if eval cmake --build .; then

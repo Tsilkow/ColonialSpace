@@ -14,7 +14,15 @@ endif()
 
 include_directories("inc")
 set(SOURCES
-	src/common.cpp)
+	src/common.cpp
+	src/log.cpp
+	src/universe.cpp
+	src/faction.cpp
+	src/system.cpp
+	src/planet.cpp
+	src/colony.cpp
+	src/fleet.cpp
+	src/ship.cpp)
 
 if(FALSE)
 find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)

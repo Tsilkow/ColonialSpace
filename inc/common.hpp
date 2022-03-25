@@ -2,9 +2,12 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 #include <set>
 #include <memory>
+#include "json.hpp"
 
+using namespace nlohmann;
 
 class Universe;
 class Faction;
@@ -20,7 +23,7 @@ struct coords
     int x;
     int y;
 
-    coords(int temp_x, int temp_y):
+    coords(int temp_x=-2137, int temp_y=-2137):
 	x(temp_x), y(temp_y)
 	{;}
 };
@@ -28,6 +31,7 @@ struct coords
 coords operator- (const coords& a, const coords& b);
 
 
+#include "log.hpp"
 #include "universe.hpp"
 #include "faction.hpp"
 #include "system.hpp"
