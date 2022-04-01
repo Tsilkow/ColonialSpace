@@ -18,7 +18,7 @@ bool Transit::Progress()
 }
 
 
-void Fleet::info(Log& log)
+void Fleet::info(Log& log, bool deep)
 {
     log.print("{");
     log.indent();
@@ -28,7 +28,8 @@ void Fleet::info(Log& log)
     log.indent();
     for(auto it = m_ships.begin(); it != m_ships.end(); ++it)
     {
-	log.print((*it)->getName());
+	if(deep) (*it)->info(log);
+	else log.print((*it)->getName());
     }
     log.deindent();
     log.print("}");

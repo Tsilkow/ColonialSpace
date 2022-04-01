@@ -5,6 +5,7 @@ void Ship::info(Log& log)
 {
     log.print("{");
     log.indent();
+    
     log.print("Name = " + getName());
     
     log.deindent();

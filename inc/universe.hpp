@@ -27,7 +27,7 @@ private:
 public:
     Universe();
     
-    void info();
+    void info(bool deep=false);
 
     bool loadFromJson(json jsonParse);
 

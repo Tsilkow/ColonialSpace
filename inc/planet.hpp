@@ -12,7 +12,7 @@ private:
 public:
     Planet() {;}
     
-    void info(Log& log);
+    void info(Log& log, bool deep=false);
 
     bool loadFromJson(json jsonParse, std::set<std::shared_ptr<Colony>>& global_colonies);
     

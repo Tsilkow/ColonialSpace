@@ -1,7 +1,7 @@
 #include "system.hpp"
 
 
-void System::info(Log& log)
+void System::info(Log& log, bool deep)
 {
     log.print("{");
     log.indent();
@@ -11,7 +11,8 @@ void System::info(Log& log)
     log.indent();
     for(auto it = m_planets.begin(); it != m_planets.end(); ++it)
     {
-	log.print((*it)->getName());
+	if(deep) (*it)->info(log, true);
+	else log.print((*it)->getName());
     }
     log.deindent();
     log.print("}");

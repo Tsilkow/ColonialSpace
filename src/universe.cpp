@@ -22,7 +22,7 @@ Universe::Universe():
     m_log.print("NEW UNIVERSE CREATED");
 }
 
-void Universe::info()
+void Universe::info(bool deep)
 {
     m_log.print("{");
     m_log.indent();
@@ -32,7 +32,8 @@ void Universe::info()
     m_log.indent();
     for(auto it = m_factions.begin(); it != m_factions.end(); ++it)
     {
-	m_log.print((*it)->getName());
+	if(deep) (*it)->info(m_log, true);
+	else m_log.print((*it)->getName());
     }
     m_log.deindent();
     m_log.print("}");
@@ -41,7 +42,8 @@ void Universe::info()
     m_log.indent();
     for(auto it = m_systems.begin(); it != m_systems.end(); ++it)
     {
-	m_log.print((*it)->getName());
+	if(deep) (*it)->info(m_log, true);
+	else m_log.print((*it)->getName());
     }
     m_log.deindent();
     m_log.print("}");
@@ -50,7 +52,8 @@ void Universe::info()
     m_log.indent();
     for(auto it = m_planets.begin(); it != m_planets.end(); ++it)
     {
-	m_log.print((*it)->getName());
+	if(deep) (*it)->info(m_log, true);
+	else m_log.print((*it)->getName());
     }
     m_log.deindent();
     m_log.print("}");
@@ -59,7 +62,8 @@ void Universe::info()
     m_log.indent();
     for(auto it = m_colonies.begin(); it != m_colonies.end(); ++it)
     {
-	m_log.print((*it)->getName());
+	if(deep) (*it)->info(m_log);
+	else m_log.print((*it)->getName());
     }
     m_log.deindent();
     m_log.print("}");
@@ -68,7 +72,8 @@ void Universe::info()
     m_log.indent();
     for(auto it = m_fleets.begin(); it != m_fleets.end(); ++it)
     {
-	m_log.print((*it)->getName());
+	if(deep) (*it)->info(m_log, true);
+	else m_log.print((*it)->getName());
     }
     m_log.deindent();
     m_log.print("}");
@@ -77,7 +82,8 @@ void Universe::info()
     m_log.indent();
     for(auto it = m_ships.begin(); it != m_ships.end(); ++it)
     {
-	m_log.print((*it)->getName());
+	if(deep) (*it)->info(m_log);
+	else m_log.print((*it)->getName());
     }
     m_log.deindent();
     m_log.print("}");
@@ -104,7 +110,7 @@ bool Universe::loadFromJson(json jsonParse)
 	m_name = jsonParse["name"].get<std::string>();
 
 	std::string template_file = jsonParse["template"].get<std::string>();
-	m_parameters.loadFromJson(readUniverseTemplate(template_file)["universe template"].get<json>());
+	m_parameters.loadFromJson(readUniverseTemplate(template_file));
 	
 	json factions = jsonParse["factions"].get<json>();
 	for(auto it = factions.begin(); it != factions.end(); ++it)

@@ -1,13 +1,28 @@
 #include "planet.hpp"
 
 
-void Planet::info(Log& log)
+void Planet::info(Log& log, bool deep)
 {
-    std::string result = "{\n";
-    result += "    Name = " + m_name + "\n";
-    if(this->hasColony()) result += "    Colony = Yes\n";
-    else result += "    Colony = No\n";
-    result += "}\n";
+    log.print("{");
+    log.indent();
+    log.print("Name = " + getName());
+    
+
+    if(hasColony())
+    {
+	log.print("Colony = {");
+	log.indent();
+	
+	if(deep) m_colony->info(log);
+	else log.print(m_colony->getName());
+    
+	log.deindent();
+	log.print("}");
+    }
+    else log.print("Colony = No");
+    
+    log.deindent();
+    log.print("}");
 }
 
 bool Planet::loadFromJson(json jsonParse, std::set<std::shared_ptr<Colony>>& global_colonies)

@@ -1,7 +1,7 @@
 #include "faction.hpp"
 
 
-void Faction::info(Log& log)
+void Faction::info(Log& log, bool deep)
 {
     log.print("{");
     log.indent();
@@ -11,7 +11,8 @@ void Faction::info(Log& log)
     log.indent();
     for(auto it = m_colonies.begin(); it != m_colonies.end(); ++it)
     {
-	log.print((*it)->getName());
+	if(deep) (*it)->info(log);
+	else log.print((*it)->getName());
     }
     log.deindent();
     log.print("}");
@@ -20,7 +21,8 @@ void Faction::info(Log& log)
     log.indent();
     for(auto it = m_fleets.begin(); it != m_fleets.end(); ++it)
     {
-	log.print((*it)->getName());
+	if(deep) (*it)->info(log, true);
+	else log.print((*it)->getName());
     }
     log.deindent();
     log.print("}");

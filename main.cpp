@@ -8,8 +8,8 @@ int main(void)
 {
     Universe universe;
 
-    universe.loadFromJson(readGameState("nominal.json")["universe"].get<json>());
-    universe.info();
+    universe.loadFromJson(readGameState("nominal.json"));
+    universe.info(true);
 
     cout << "What sound do you make, when you scream?" << endl;
     

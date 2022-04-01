@@ -11,7 +11,7 @@ json readGameState(std::string filename)
     json result;
     file >> result;
 
-    return result;
+    return result["universe"].get<json>();
 }
 
 json readUniverseTemplate(std::string filename)
@@ -20,5 +20,5 @@ json readUniverseTemplate(std::string filename)
     json result;
     file >> result;
 
-    return result;
+    return result["universe template"].get<json>();;
 }

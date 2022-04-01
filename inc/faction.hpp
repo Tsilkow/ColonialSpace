@@ -12,7 +12,7 @@ private:
 public:
     Faction() {;}
     
-    void info(Log& log);
+    void info(Log& log, bool deep=false);
 
     bool loadFromJson(json jsonParse, std::set<std::shared_ptr<Fleet>>& global_fleets,
 		      std::set<std::shared_ptr<Ship>>& global_ships);
