@@ -5,8 +5,9 @@
 class Ship
 {
 private:
+    std::shared_ptr<Universe> m_universe;
     std::string m_name;
-    Fleet* m_fleet;
+    std::shared_ptr<Fleet> m_fleet;
 public:
     Ship() {;}
     
@@ -15,5 +16,5 @@ public:
     bool loadFromJson(json jsonParse);
     
     const std::string& getName() {return m_name; }
-    const Fleet* getFleet() {return m_fleet; }
+    const std::shared_ptr<Fleet>& getFleet() {return m_fleet; }
 };

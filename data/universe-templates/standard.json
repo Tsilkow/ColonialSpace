@@ -1,0 +1,8 @@
+{
+    "universe template":
+    {
+	"name": "Standard",
+
+	"flight speed": 10
+    }
+}

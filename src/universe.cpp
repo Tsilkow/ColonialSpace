@@ -1,6 +1,21 @@
 #include "universe.hpp"
 
 
+bool Parameters::loadFromJson(json jsonParse)
+{
+    try{
+	name = jsonParse["name"].get<std::string>();
+
+	flight_speed_inv = 1.f/jsonParse["flight speed"].get<float>();
+    }
+    catch (json::exception& e)
+    {
+	std::cout << "INIT FILE ERROR IN UNIVERSE PARAMATERS = " << e.what() << std::endl;
+	return false;
+    }
+    return true;
+}
+
 Universe::Universe():
     m_log(Log())
 {
@@ -76,10 +91,20 @@ void Universe::deep_info()
     ;
 }*/
 
+
+int Universe::calcFlight(const coords& a, const coords& b)
+{
+    return std::max(1, (int)std::round((b-a).length() * m_parameters.flight_speed_inv));
+}
+
+
 bool Universe::loadFromJson(json jsonParse)
 {
     try{
 	m_name = jsonParse["name"].get<std::string>();
+
+	std::string template_file = jsonParse["template"].get<std::string>();
+	m_parameters.loadFromJson(readUniverseTemplate(template_file)["universe template"].get<json>());
 	
 	json factions = jsonParse["factions"].get<json>();
 	for(auto it = factions.begin(); it != factions.end(); ++it)

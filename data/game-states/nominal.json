@@ -1,7 +1,8 @@
 {
     "universe":
     {
-	"name": "test_universe",
+	"name": "Test Universe",
+	"template": "standard.json",
 	"factions":
 	[
 	    {

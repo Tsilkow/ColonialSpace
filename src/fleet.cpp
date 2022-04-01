@@ -1,6 +1,23 @@
 #include "fleet.hpp"
 
 
+Transit::Transit(std::shared_ptr<Universe>& universe, std::shared_ptr<System>& _from,
+		 std::shared_ptr<System>& _to):
+    from(_from),
+    to(_to),
+    progress(0)
+{
+    duration = universe->calcFlight(from->getPosition(), to->getPosition());
+}
+
+bool Transit::Progress()
+{
+    ++progress;
+    if(progress == duration) return true;
+    return false;
+}
+
+
 void Fleet::info(Log& log)
 {
     log.print("{");

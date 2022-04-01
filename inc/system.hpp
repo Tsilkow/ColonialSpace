@@ -5,6 +5,7 @@
 class System
 {
 private:
+    std::shared_ptr<Universe> m_universe;
     std::string m_name;
     coords m_position;
     std::set<std::shared_ptr<Planet>> m_planets;

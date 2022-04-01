@@ -5,9 +5,10 @@
 class Colony
 {
 private:
+    std::shared_ptr<Universe> m_universe;
     std::string m_name;
-    Planet* m_planet;
-    Faction* m_faction;
+    std::shared_ptr<Planet> m_planet;
+    std::shared_ptr<Faction> m_faction;
 public:
     Colony() {;}
     
@@ -16,6 +17,6 @@ public:
     bool loadFromJson(json jsonParse);
     
     const std::string& getName() {return m_name; }
-    const Planet* getPlanet() {return m_planet; }
-    const Faction* getFaction() {return m_faction; }
+    const std::shared_ptr<Planet>& getPlanet() {return m_planet; }
+    const std::shared_ptr<Faction>& getFaction() {return m_faction; }
 };

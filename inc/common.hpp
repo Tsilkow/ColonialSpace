@@ -26,9 +26,15 @@ struct coords
     coords(int temp_x=-2137, int temp_y=-2137):
 	x(temp_x), y(temp_y)
 	{;}
+
+    int length() {return sqrt(x*x + y*y); }
 };
 
 coords operator- (const coords& a, const coords& b);
+
+json readGameState(std::string filename);
+
+json readUniverseTemplate(std::string filename);
 
 
 #include "log.hpp"

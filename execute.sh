@@ -1,6 +1,7 @@
 #!/bin/bash
 
 clear
+rm -rf build/data/
 cp -r data/ build/data/
 cd build/
 cmake ..

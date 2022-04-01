@@ -5,6 +5,7 @@
 class Faction
 {
 private:
+    std::shared_ptr<Universe> m_universe;
     std::string m_name;
     std::set<std::shared_ptr<Colony>> m_colonies;
     std::set<std::shared_ptr<Fleet>> m_fleets;
