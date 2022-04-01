@@ -1,0 +1,98 @@
+{
+    "factions":
+    {
+	"Collective":
+	{
+	    "color": [0, 255, 0],
+	    "human-controlled": false
+	},
+	"Empire":
+	{
+	    "color": [255, 0, 0],
+	    "human-controlled": false
+	}
+    },
+    "systems":
+    {
+	"Vega":
+	{
+	    "position": [10, 10],
+	    "planets":
+	    [
+		{
+		    "size": 10,
+		    "colony":
+		    {
+			"controlled-by": "Empire",
+			"population": 2
+		    }
+		}
+	    ]
+	},
+	"Rigel":
+	{
+	    "position": [40, 20],
+	    "planets":
+	    [
+		{
+		    "size": 20,
+		    "colony":
+		    {
+			"controlled-by": "Collective",
+			"population": 3
+		    }
+		}
+	    ]
+	},
+	"Pleiades":
+	{
+	    "position": [30, 30],
+	    "planets":
+	    [
+		{
+		    "size": 5
+		}
+	    ]
+	}
+    },
+    "fleets":
+    {
+	"1st Colonizing Mission":
+	{
+	    "controlled-by": "Collective",
+	    "location": "Pleiades",
+	    "ships":
+	    {
+		"Fighter": 2,
+		"Colonizator": 1
+	    }
+	},
+	"5th Legion":
+	{
+	    "controlled-by": "Empire",
+	    "location": "Vega",
+	    "ships":
+	    {
+		"Fighter": 5,
+	    }
+	}
+    },
+    "ship-types":
+    {
+	"Fighter":
+	{
+	    "firepower": 1,
+	    "manouverability": 10,
+	    "cost": 3,
+	    "maintenance": 1
+	},
+	"Colonizator":
+	{
+	    "firepower": 0,
+	    "manouverability": 2,
+	    "cost": 20,
+	    "maintenance": 1,
+	    "colonist": true
+	}
+    }
+}

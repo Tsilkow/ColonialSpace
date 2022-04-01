@@ -1,0 +1,55 @@
+{
+    "universe":
+    {
+	"name": "test_universe",
+	"factions":
+	[
+	    {
+		"name": "The Empire",
+		"fleets":
+		[
+		    {
+			"name": "Legion",
+			"ships":
+			[
+			    {
+				"name": "The Inquisitor"
+			    }
+			]
+		    }
+		]
+	    }
+	],
+	"systems":
+	[
+	    {
+		"name": "Sol",
+		"planets":
+		[
+		    {
+			"name": "Earth",
+			"colony":
+			{
+			    "name": "Terra",
+			    "faction": "The Empire"
+			}
+		    },
+		    {
+			"name": "Mars",
+			"colony": null
+		    }
+		]
+	    },
+	    {
+		"name": "Vega",
+		"planets":
+		[
+		    {
+			"name": "Vega I",
+			"colony": null
+		    }
+		]
+	    }
+	]
+    }
+}
